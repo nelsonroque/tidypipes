@@ -4,7 +4,7 @@
 \alias{get_tz_ts}
 \title{Get Filename Timestamp}
 \usage{
-get_tz_ts(time = Sys.time(), tz = "UTC")
+get_tz_ts(time = Sys.time(), format = "\%Y-\%B-\%d_\%H-\%M-\%S", tz = "UTC")
 }
 \arguments{
 \item{time}{A POSIXct object representing the time. Defaults to the current system time (`Sys.time()`).}

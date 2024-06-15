@@ -16,7 +16,9 @@
 #'
 #' # Generate a cleaned timestamp for a specific time
 #' get_fn_ts(as.POSIXct("2024-06-15 12:34:56"))
-get_tz_ts <- function(time = Sys.time(), tz="UTC") {
+get_tz_ts <- function(time = Sys.time(),
+                      format="%Y-%B-%d_%H-%M-%S",
+                      tz="UTC") {
   withr::local_locale(c("LC_TIME" = "C"))
   format(time, format , tz = tz)
 }

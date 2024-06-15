@@ -16,7 +16,7 @@
 #' @importFrom tidyr pivot_longer
 t_tibble <- function(.data) {
   df = .data %>%
-    dplyr::mutate(dplyr::across(everything(), as.character)) %>%
+    dplyr::mutate(dplyr::across(tidyselect::everything(), as.character)) %>%
     tibble::rownames_to_column(var = "rowname") %>%
     tidyr::pivot_longer(-rowname, names_to = "key", values_to = "value") %>%
     dplyr::select(-rowname)

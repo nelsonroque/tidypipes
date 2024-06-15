@@ -36,6 +36,8 @@ read_data_file <- function(file_path) {
     jsonlite::fromJSON(file_path)
   } else if (stringr::str_detect(file_path, "\\.sas7bdat$")) {
     haven::read_sas(file_path)
+  } else if (stringr::str_detect(file_path, "\\.xpt$")) {
+    haven::read_xpt(file_path)
   } else if (stringr::str_detect(file_path, "\\.parquet$")) {
     arrow::read_parquet(file_path)
   } else if (stringr::str_detect(file_path, "\\.xlsx$")) {

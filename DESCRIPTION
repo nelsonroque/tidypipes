@@ -16,8 +16,12 @@ Imports:
     dplyr,
     janitor,
     tidyr,
-    ggplot2,
     haven, 
     todor,
-    digest
+    digest,
+    tibble,
+    writexl,
+    arrow, 
+    haven,
+    jsonlite
 RoxygenNote: 7.3.1
