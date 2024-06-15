@@ -94,3 +94,9 @@ tidypipes::extract_variables_from_file("tmp/test.csv")
 tidypipes::extract_variables_from_file_list(list.files("tmp/",
                                                        recursive = T,
                                                        full.names = T))
+
+
+# Example usage
+tidypipes::send_teams_webhook_message(webhook_url='[INSERT TEAMS WEBHOOK URL]',
+                                "Status Update",
+                                "Step 1: Succesfully ran!")
