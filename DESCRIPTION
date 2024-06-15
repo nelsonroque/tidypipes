@@ -24,5 +24,13 @@ Imports:
     arrow, 
     haven,
     jsonlite,
-    glue
+    glue,
+    cli,
+    tidyselect,
+    withr,
+    purrr,
+    readr,
+    readxl,
+    rlang,
+    stringr
 RoxygenNote: 7.3.1

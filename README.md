@@ -143,3 +143,9 @@ Logs the details of each step in a process, including a timestamp, process ID, s
 
 - Log a step with default settings.
 - Log a step with a specific process ID.
+
+
+# Outstanding question
+
+variable vs column_name
+file vs filename

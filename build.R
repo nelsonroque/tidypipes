@@ -84,3 +84,13 @@ tf_dates2 = tibble::tibble(dt = sample(seq(anytime::anydate("2000-01-01"),
                                       time_features = F,
                                       time_rounded_features=F) %>%
   arrange(dt_datetime)
+
+# create simple codebook (with notes field to be filled in by human)
+# TODO: OpenAI integration for notes suggestions from column names
+tidypipes::create_simple_codebook(tf_dates2)
+
+tidypipes::extract_variables_from_file("tmp/test.csv")
+
+tidypipes::extract_variables_from_file_list(list.files("tmp/",
+                                                       recursive = T,
+                                                       full.names = T))

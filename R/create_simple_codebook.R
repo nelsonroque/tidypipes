@@ -17,8 +17,8 @@
 #' )
 #'
 #' # Generate the column names and data types report
-#' get_column_info(dataset)
-get_column_info <- function(dataset) {
+#' create_simple_codebook(dataset)
+create_simple_codebook <- function(dataset) {
   if (!is.data.frame(dataset) && !is_tibble(dataset)) {
     stop("The input must be a data frame or tibble.")
   }

@@ -47,7 +47,7 @@ read_data_file <- function(file_path) {
   } else if (stringr::str_detect(file_path, "\\.rds$")) {
     readRDS(file_path)
   } else {
-    stop("File format not supported")
+    stop(paste0("File format not supported: ", file_path))
   }
 }
 

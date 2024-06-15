@@ -18,9 +18,7 @@ append_datetime_features(
 
 \item{time_features}{A logical for time features}
 
-\item{time_features_rounded}{A logical for rounded time features}
-
-\item{append_rounded}{A logical value indicating whether to append rounded date timestamps. Defaults to TRUE.}
+\item{time_features_rounded}{A logical value indicating whether to append rounded date timestamps. Defaults to TRUE.}
 }
 \value{
 A data frame with appended date and time features.
