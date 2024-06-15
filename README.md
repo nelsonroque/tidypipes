@@ -3,70 +3,90 @@
 
 A comprehensive R package providing utility functions for dataset analysis and logging. This package includes functions to generate dataset statistics, log process steps, detect TODO comments, and more, all using tidyverse principles.
 
-## Functions
+## Inspired By
+https://github.com/easystats
+https://github.com/easystats/datawizard
 
-### `get_column_info`
+# Installation
 
-Generates a tibble with the column names and data types for all columns in a given dataset.
+| Type | Source | Command |
+|----|----|----|
+| Release | CRAN | `install.packages("tidypipes")` |
+| Development | GitHub | `remotes::install_github("nelsonroque/tidypipes")` |
 
-#### Example
+# Citation
 
-- Create a sample dataset and generate the column names and data types report.
+To cite the package, run the following command:
 
-### `get_dataset_stats`
+``` r
+citation("tidypipes")
 
-Generates statistics for a given dataset, including the number of columns, number of rows, number of missing values, column names, and an MD5 hash of the dataset.
+[INSERT JOSS INFORMATION HERE :) ]
+```
 
-#### Example
+# Features
 
-- Create a sample dataset and generate the dataset statistics.
+### Data and pipeline reports
 
-### `append_date_features`
-
-Appends date-based features to a dataset.
-
-#### Example
-
-- Create a sample dataset and append date features to the dataset.
-
-### `log_step`
-
-Logs the details of each step in a process, including a timestamp, process ID, status, and message.
-
-#### Example
-
-- Log a step with default settings.
-- Log a step with a specific process ID.
-
-### `get_todo_report`
+#### `get_todo_report`
 
 Generates a report of all TODO comments detected in the code.
 
-#### Example
+##### Example
 
 - Generate a TODO report.
 
-### `get_package_report`
+#### `get_package_report`
 
 Generates a report of the currently installed packages, returning the information as a cleaned tibble.
 
-#### Example
+##### Example
 
 - Generate a report of the installed packages.
 
-### `get_env_report`
+#### `get_env_report`
 
 Generates a report of the current system environment.
 
-#### Example
+##### Example
 
 - Generate an environment report.
 
-### `read_data_file`
+### Prepare metadata
+
+#### `get_column_info`
+
+Generates a tibble with the column names and data types for all columns in a given dataset.
+
+##### Example
+
+- Create a sample dataset and generate the column names and data types report.
+
+#### `get_dataset_stats`
+
+Generates statistics for a given dataset, including the number of columns, number of rows, number of missing values, column names, and an MD5 hash of the dataset.
+
+##### Example
+
+- Create a sample dataset and generate the dataset statistics.
+
+### Data Transformations
+
+#### `append_date_features`
+
+Appends date-based features to a dataset.
+
+##### Example
+
+- Create a sample dataset and append date features to the dataset.
+
+### Interoperable Data
+
+#### `read_data_file`
 
 Reads a data file based on its extension and returns a data frame or list.
 
-#### Example
+##### Example
 
 - Read a CSV file.
 - Read a JSON file.
@@ -76,11 +96,11 @@ Reads a data file based on its extension and returns a data frame or list.
 - Read a Feather file.
 - Read an RDS file.
 
-### `write_data_file`
+#### `write_data_file`
 
 Writes a data frame to a file based on the specified extension.
 
-#### Example
+##### Example
 
 - Write a data frame to a CSV file.
 - Write a data frame to a JSON file.
@@ -89,11 +109,22 @@ Writes a data frame to a file based on the specified extension.
 - Write a data frame to a Feather file.
 - Write a data frame to an RDS file.
 
-### `get_fn_ts`
+### Utilities
+
+#### `get_fn_ts`
 
 Generates a timestamp suitable for use in filenames.
 
-#### Example
+##### Example
 
 - Generate a cleaned timestamp for the current time.
 - Generate a cleaned timestamp for a specific time.
+
+#### `log_step`
+
+Logs the details of each step in a process, including a timestamp, process ID, status, and message.
+
+##### Example
+
+- Log a step with default settings.
+- Log a step with a specific process ID.
