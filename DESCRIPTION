@@ -1,0 +1,23 @@
+Package: tidypipes
+Type: Package
+Title: Tidy Data Pipelines For All-Scale Data Management
+Version: 0.1.0
+Author: Nelson Roque, PhD
+Maintainer: Nelson Roque <nelsonroquejr@gmail.com>
+Description: This package provides tools for creating tidy data pipelines,
+    enabling streamlined data cleaning and processing workflows.
+    Use four spaces when indenting paragraphs within the Description.
+License: MIT
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    tidyverse,
+    magrittr,
+    dplyr,
+    janitor,
+    tidyr,
+    ggplot2,
+    haven, 
+    todor,
+    digest
+RoxygenNote: 7.3.1
