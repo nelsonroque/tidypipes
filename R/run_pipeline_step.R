@@ -23,6 +23,16 @@ run_pipeline_step <- function(
   ### Set logging vars ----
   process_id = digest::digest(Sys.time())
 
+  # Print the log message to the console
+  log_msg <- paste(Sys.time(),
+                   process_id,
+                   "INIT",
+                   "Initiating pipeline step handling",
+                   sep = " - "
+  )
+  cli::cli_h1(glue::glue("[PIPELINE STEP STARTED] Step: {step}"))
+  cli::cli_alert_info(log_msg)
+
   ### VALIDATE PIPELINE SCRIPTS -----
   #### CHECK 1: does pipeline path have trailing slash? ----
   is_pipeline_path_invalid1 = "/" != stringr::str_sub(
@@ -69,6 +79,7 @@ run_pipeline_step <- function(
              status = "ELAPSED",
              msg = paste0(elapsed_secs, " seconds."))
     step_metadata = tibble::tibble(
+      process_id = process_id,
       step_result = 1,
       start_proc_time = tm1[[1]],
       end_proc_time = tm2[[1]],
@@ -77,6 +88,9 @@ run_pipeline_step <- function(
       elapsed_secs = elapsed_secs[[1]],
       errors = NA
     ) %>% t_tibble(.)
+
+    cli::cli_h1(glue::glue("[PIPELINE STEP COMPLETED] Step: {step}"))
+
     return(step_metadata)  # Success
   }, error = function(e) {
 
@@ -89,7 +103,8 @@ run_pipeline_step <- function(
              status = "ERROR",
              msg = paste0("step: ", step, " error: ", e$message))
     step_metadata = tibble::tibble(
-      step_result = 1,
+      process_id = process_id,
+      step_result = 0,
       start_proc_time = tm1[[1]],
       end_proc_time = tm2[[1]],
       start_clock_time = start_time,

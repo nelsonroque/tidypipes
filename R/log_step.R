@@ -42,6 +42,7 @@ log_step <- function(
   )
 
   # Print the log message to the console
+  cli::cli_h1("[LOG]")
   cli::cli_alert_info(log_msg)
 
   # Write the log message to the specified file

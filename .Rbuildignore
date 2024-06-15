@@ -2,3 +2,8 @@
 ^renv\.lock$
 ^.*\.Rproj$
 ^\.Rproj\.user$
+
+^build\.R$
+^log\.txt$
+^notes\.txt$
+^tmp$

@@ -61,10 +61,26 @@ tf_xlsx = tidypipes::read_data_file(file_path = 'tmp/test.xlsx')
 tf_parquet = tidypipes::read_data_file(file_path = 'tmp/test.parquet')
 
 # validate data ------
-sum(tf_csv$x) == sum(tf_xpt$x)
-sum(tf_csv$x) == sum(tf_xlsx$x)
-sum(tf_csv$x) == sum(tf_parquet$x)
-sum(tf_xlsx$x) == sum(tf_parquet$x)
-sum(tf_xpt$x) == sum(tf_parquet$x)
-sum(tf_xpt$x) == sum(tf_xlsx$x)
+# sum(tf_csv$x) == sum(tf_xpt$x)
+# sum(tf_csv$x) == sum(tf_xlsx$x)
+# sum(tf_csv$x) == sum(tf_parquet$x)
+# sum(tf_xlsx$x) == sum(tf_parquet$x)
+# sum(tf_xpt$x) == sum(tf_parquet$x)
+# sum(tf_xpt$x) == sum(tf_xlsx$x)
 
+# append date features -----
+
+tf_dates = tibble::tibble(dt = sample(seq(anytime::anytime("2000-01-01 00:00:00"),
+                                          anytime::anytime("2024-01-01 00:00:00"), 1), 100)) %>%
+tidypipes::append_datetime_features(.,
+                                    dt_var = 'dt',
+                                    time_rounded_features=F) %>%
+  arrange(dt_datetime)
+
+tf_dates2 = tibble::tibble(dt = sample(seq(anytime::anydate("2000-01-01"),
+                                          anytime::anydate("2024-01-01"), 1), 100)) %>%
+  tidypipes::append_datetime_features(.,
+                                      dt_var = 'dt',
+                                      time_features = F,
+                                      time_rounded_features=F) %>%
+  arrange(dt_datetime)
