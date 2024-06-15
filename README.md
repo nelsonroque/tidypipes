@@ -14,6 +14,21 @@ https://github.com/easystats/datawizard
 | Release | CRAN | `install.packages("tidypipes")` |
 | Development | GitHub | `remotes::install_github("nelsonroque/tidypipes")` |
 
+## Known Warnings
+
+```
+── R CMD build ──────────────────────────────────────────────────────────────
+✔  checking for file ‘/Users/nur375/Documents/GitHub/tidypipes/DESCRIPTION’ ...
+─  preparing ‘tidypipes’:
+✔  checking DESCRIPTION meta-information
+─  checking for LF line-endings in source and make files and shell scripts
+─  checking for empty or unneeded directories
+   Omitted ‘LazyData’ from DESCRIPTION
+─  building ‘tidypipes_0.1.0.tar.gz’
+   Warning: invalid uid value replaced by that for user 'nobody'
+   Warning: invalid gid value replaced by that for user 'nobody'
+```
+
 # Citation
 
 To cite the package, run the following command:

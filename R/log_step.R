@@ -28,7 +28,7 @@ log_step <- function(
     ) {
   # Generate a process ID if not provided
   if (is.na(process_id)) {
-    process_id <- digest::digest(Sys.time())
+    process_id <- digest::digest(ts)
   } else {
     process_id <- process_id
   }
