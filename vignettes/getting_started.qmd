@@ -15,7 +15,7 @@ library(tidypipes)
 pipeline_result <- tidypipes::run_pipeline_step(step = "test_step.R",
                              pipeline_path = "~/Desktop/pipeline/")
 
-pipeline_results <- run_pipeline_from_config(config_file = "config.json")
+# pipeline_results <- tidypipes::run_pipeline_from_config(config_file = "config.json")
 
 # get environment report -----
 tidypipes::get_env_report()

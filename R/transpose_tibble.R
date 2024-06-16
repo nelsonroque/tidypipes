@@ -7,6 +7,8 @@
 #' @param .data A data frame to be transformed.
 #'
 #' @return A tibble in long format with key-value pairs.
+#' @export
+#'
 #' @examples
 #' df <- data.frame(A = 1:3, B = 4:6)
 #' t_tibble(df)

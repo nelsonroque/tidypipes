@@ -20,8 +20,7 @@
 append_datetime_features <- function(.data,
                                      dt_var = NA,
                                      time_features = TRUE,
-                                     time_rounded_features = TRUE) {
-  # Convert dt_var to appropriate date or date-time object
+                                     time_features_rounded = TRUE) {
   # Convert dt_var to appropriate date or date-time object
   if (inherits(.data[[dt_var]], "POSIXct") || inherits(.data[[dt_var]], "POSIXt")) {
     data_dates <- .data %>%
@@ -65,7 +64,7 @@ append_datetime_features <- function(.data,
   }
 
   #' Append rounded date timestamps if requested
-  if (time_rounded_features) {
+  if (time_features_rounded) {
     data_dates <- data_dates %>%
       #' Append rounded date timestamps
       mutate(

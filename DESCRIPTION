@@ -7,7 +7,7 @@ Maintainer: Nelson Roque <nelsonroquejr@gmail.com>
 Description: This package provides tools for creating tidy data pipelines,
     enabling streamlined data cleaning and processing workflows.
     Use four spaces when indenting paragraphs within the Description.
-License: MIT
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports: 
@@ -21,8 +21,7 @@ Imports:
     digest,
     tibble,
     writexl,
-    arrow, 
-    haven,
+    arrow,
     jsonlite,
     glue,
     cli,
@@ -33,4 +32,9 @@ Imports:
     readxl,
     rlang,
     stringr
+Suggests:
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0)
 RoxygenNote: 7.3.1
+VignetteBuilder: knitr

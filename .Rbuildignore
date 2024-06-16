@@ -7,3 +7,7 @@
 ^log\.txt$
 ^notes\.txt$
 ^tmp$
+
+TEST_RUN_PIPELINE\.R$
+config\.json$
+output_for_chatgpt_debugging\.txt$

@@ -6,12 +6,10 @@
 #'
 #' @param step The pipeline step script to run. Should not be NA.
 #' @param pipeline_path The path to the pipeline scripts, with a trailing slash.
-#'
+#' @param config Configuration list - loaded from `config.json` template file
 #' @return Integer 1 for success and 0 for failure.
 #' @export
 #'
-#' @examples
-#' run_pipeline_step(step = "step1.R", pipeline_path = "pipeline/")
 run_pipeline_step <- function(
     step = NA,
     pipeline_path = "pipeline/",

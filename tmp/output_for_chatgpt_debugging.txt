@@ -1,0 +1,76 @@
+NULL
+══ Documenting ═════════════════════════════════════════════════════════════
+
+══ Building ════════════════════════════════════════════════════════════════
+Setting env vars:
+• CFLAGS    : -Wall -pedantic
+• CXXFLAGS  : -Wall -pedantic
+• CXX11FLAGS: -Wall -pedantic
+• CXX14FLAGS: -Wall -pedantic
+• CXX17FLAGS: -Wall -pedantic
+• CXX20FLAGS: -Wall -pedantic
+── R CMD build ─────────────────────────────────────────────────────────────
+  ✔  checking for file ‘/Users/nur375/Documents/GitHub/tidypipes/DESCRIPTION’
+  ─  preparing ‘tidypipes’: (350ms)
+   checking DESCRIPTION meta-information ...  ✔  checking DESCRIPTION meta-information
+  ─  checking for LF line-endings in source and make files and shell scripts
+  ─  checking for empty or unneeded directories
+     Omitted ‘LazyData’ from DESCRIPTION
+  ─  building ‘tidypipes_0.1.2.tar.gz’
+     Warning: invalid uid value replaced by that for user 'nobody'
+   Warning: invalid gid value replaced by that for user 'nobody'
+     
+══ Checking ════════════════════════════════════════════════════════════════
+Setting env vars:
+• _R_CHECK_CRAN_INCOMING_REMOTE_               : FALSE
+• _R_CHECK_CRAN_INCOMING_                      : FALSE
+• _R_CHECK_FORCE_SUGGESTS_                     : FALSE
+• _R_CHECK_PACKAGES_USED_IGNORE_UNUSED_IMPORTS_: FALSE
+• NOT_CRAN                                     : true
+── R CMD check ─────────────────────────────────────────────────────────────
+  ─  using log directory ‘/private/var/folders/s5/cdfgl21s67g7kcj9ts4x8pnn4njnsy/T/RtmpfsM4z3/filee74554da5f9e/tidypipes.Rcheck’
+─  using R version 4.3.1 (2023-06-16)
+-  ─  using platform: aarch64-apple-darwin20 (64-bit)
+─  R was compiled by
+       Apple clang version 14.0.0 (clang-1400.0.29.202)
+       GNU Fortran (GCC) 12.2.0
+─  running under: macOS Ventura 13.0
+─  using session charset: UTF-8
+\  ─  using options ‘--no-manual --as-cran’
+|  ✔  checking for file ‘tidypipes/DESCRIPTION’
+─  checking extension type ... Package
+─  this is package ‘tidypipes’ version ‘0.1.2’
+─  package encoding: UTF-8
+   checking package namespace information .../  ✔  checking package namespace information
+   checking package dependencies ...-\|/-  N  checking package dependencies (815ms)
+   Imports includes 21 non-default packages.
+   Importing from so many packages makes the package vulnerable to any of
+   them becoming unavailable.  Move as many as possible to Suggests and
+   use conditionally.
+\  ✔  checking if this is a source package
+   checking if there is a namespace ...|  ✔  checking if there is a namespace
+/     checking for executable files ...-  ✔  checking for executable files
+\  ✔  checking for hidden files and directories
+✔  checking for portable file names
+|  ✔  checking for sufficient/correct file permissions
+✔  checking serialization versions
+   checking whether package ‘tidypipes’ can be installed .../-\|/-\|/-  ✔  checking whether package ‘tidypipes’ can be installed (1.8s)
+\     checking installed package size ...|  ✔  checking installed package size
+/     checking package directory ...-  ✔  checking package directory
+   checking for future file timestamps ...\|  ✔  checking for future file timestamps
+/     checking DESCRIPTION meta-information ...-  ✔  checking DESCRIPTION meta-information
+\  N  checking top-level files
+   Non-standard file/directory found at top level:
+     ‘test-data’
+✔  checking for left-over files
+✔  checking index information
+   checking package subdirectories ...|  ✔  checking package subdirectories
+/     checking R files for non-ASCII characters ...-  ✔  checking R files for non-ASCII characters
+  \     checking R files for syntax errors ...|  ✔  checking R files for syntax errors
+/     checking whether the package can be loaded ...-\  ✔  checking whether the package can be loaded (339ms)
+   checking whether the package can be loaded with stated dependencies ...|/  ✔  checking whether the package can be loaded with stated dependencies
+   checking whether the package can be unloaded cleanly ...-\  ✔  checking whether the package can be unloaded cleanly
+   checking whether the namespace can be loaded with stated dependencies ...|/  ✔  checking whether the namespace can be loaded with stated dependencies
+   checking whether the namespace can be unloaded cleanly ...-\  ✔  checking whether the namespace can be unloaded cleanly (353ms)
+|     checking loading without being on the library search path .../-\  ✔  checking loading without being on the library search path (422ms)
+|/     checking dependencies in R code ...-\

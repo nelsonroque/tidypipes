@@ -6,6 +6,7 @@
 #'
 #' @param time A POSIXct object representing the time. Defaults to the current system time (`Sys.time()`).
 #' @param tz Timezone string
+#' @param format Format string, R syntax
 #'
 #' @return A character string representing the cleaned timestamp.
 #' @export

@@ -10,6 +10,8 @@ run_pipeline_step(step = NA, pipeline_path = "pipeline/", config = NA)
 \item{step}{The pipeline step script to run. Should not be NA.}
 
 \item{pipeline_path}{The path to the pipeline scripts, with a trailing slash.}
+
+\item{config}{Configuration list - loaded from `config.json` template file}
 }
 \value{
 Integer 1 for success and 0 for failure.
@@ -18,7 +20,4 @@ Integer 1 for success and 0 for failure.
 This function runs a specified pipeline step script located in a given pipeline path
 after performing a series of validation checks. It logs the start, completion, and
 elapsed time of the step execution. Additionally, it can handle different time zones.
-}
-\examples{
-run_pipeline_step(step = "step1.R", pipeline_path = "pipeline/")
 }

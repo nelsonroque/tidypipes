@@ -10,6 +10,8 @@ get_fn_ts(time = Sys.time(), tz = "UTC", format = "\%Y-\%B-\%d_\%H-\%M-\%S")
 \item{time}{A POSIXct object representing the time. Defaults to the current system time (`Sys.time()`).}
 
 \item{tz}{Timezone string}
+
+\item{format}{Format string, R syntax}
 }
 \value{
 A character string representing the cleaned timestamp.

@@ -8,7 +8,7 @@ append_datetime_features(
   .data,
   dt_var = NA,
   time_features = TRUE,
-  time_rounded_features = TRUE
+  time_features_rounded = TRUE
 )
 }
 \arguments{

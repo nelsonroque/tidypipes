@@ -9,6 +9,8 @@ get_tz_ts(time = Sys.time(), format = "\%Y-\%B-\%d_\%H-\%M-\%S", tz = "UTC")
 \arguments{
 \item{time}{A POSIXct object representing the time. Defaults to the current system time (`Sys.time()`).}
 
+\item{format}{Format string, R syntax}
+
 \item{tz}{Timezone string}
 }
 \value{
