@@ -4,7 +4,7 @@
 \alias{run_pipeline_step}
 \title{Run pipeline step with validation}
 \usage{
-run_pipeline_step(step = NA, pipeline_path = "pipeline/")
+run_pipeline_step(step = NA, pipeline_path = "pipeline/", config = NA)
 }
 \arguments{
 \item{step}{The pipeline step script to run. Should not be NA.}

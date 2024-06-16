@@ -12,24 +12,28 @@
 #' send_teams_webhook_message(webhook_url, "Test Title", "This is a test message.")
 #' @export
 send_teams_webhook_message <- function(webhook_url, title, text) {
+  # Validate URL
+  if (!httr::http_error(webhook_url)) {
+    # Define the message payload
+    message <- list(
+      text = text,
+      title = title
+    )
 
-  # Define the message payload
-  message <- list(
-    text = text,
-    title = title
-  )
+    # Send a POST request to the Teams webhook URL with the payload
+    response <- httr::POST(
+      url = webhook_url,
+      body = message,
+      encode = "json"
+    )
 
-  # Send a POST request to the Teams webhook URL with the payload
-  response <- httr::POST(
-    url = webhook_url,
-    body = message,
-    encode = "json"
-  )
-
-  # Check the response status code to verify if the message was sent successfully
-  if (httr::status_code(response) == 200) {
-    return("Message sent successfully")
+    # Check the response status code to verify if the message was sent successfully
+    if (httr::status_code(response) == 200) {
+      return("Message sent successfully")
+    } else {
+      return(paste("Failed to send message. Status code:", httr::status_code(response)))
+    }
   } else {
-    return(paste("Failed to send message. Status code:", httr::status_code(response)))
+    return("Invalid URL")
   }
 }

@@ -1,7 +1,7 @@
 Package: tidypipes
 Type: Package
 Title: Tidy Data Pipelines For All-Scale Data Management
-Version: 0.1.1
+Version: 0.1.2
 Author: Nelson Roque, PhD
 Maintainer: Nelson Roque <nelsonroquejr@gmail.com>
 Description: This package provides tools for creating tidy data pipelines,

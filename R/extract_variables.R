@@ -9,10 +9,20 @@
 #' @importFrom tidypipes read_data_file
 #' @importFrom tibble tibble
 extract_variables_from_file <- function(file) {
-  df <- tidypipes::read_data_file(file)
-  tibble::tibble(
-    filename = file,
-    column_name = colnames(df)
+  tryCatch(
+    {
+      df <- tidypipes::read_data_file(file)
+      tibble(
+        filename = file,
+        column_name = colnames(df)
+      )
+    },
+    error = function(e) {
+      tibble(
+        filename = file,
+        column_name = NA
+      )
+    }
   )
 }
 

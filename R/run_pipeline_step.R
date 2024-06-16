@@ -14,8 +14,15 @@
 #' run_pipeline_step(step = "step1.R", pipeline_path = "pipeline/")
 run_pipeline_step <- function(
     step = NA,
-    pipeline_path = "pipeline/"
+    pipeline_path = "pipeline/",
+    config = NA
 ) {
+
+  # if(!is.na(config)) {
+  #   CONSTANTS = config$constants
+  # } else {
+  #   CONSTANTS = NA
+  # }
 
   ### get available scripts
   pipeline_avail_scripts = list.files(path = pipeline_path)
@@ -80,6 +87,7 @@ run_pipeline_step <- function(
              msg = paste0(elapsed_secs, " seconds."))
     step_metadata = tibble::tibble(
       process_id = process_id,
+      step = step,
       step_result = 1,
       start_proc_time = tm1[[1]],
       end_proc_time = tm2[[1]],
@@ -104,6 +112,7 @@ run_pipeline_step <- function(
              msg = paste0("step: ", step, " error: ", e$message))
     step_metadata = tibble::tibble(
       process_id = process_id,
+      step = step,
       step_result = 0,
       start_proc_time = tm1[[1]],
       end_proc_time = tm2[[1]],

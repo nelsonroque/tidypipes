@@ -1,0 +1,11 @@
+{
+  "pipeline_path": "~/Desktop/pipeline/",
+  "steps": [
+    "test_step.R",
+    "test_step.R"
+  ],
+  "constants": {
+    "rt_threshold": 500,
+    "label_missing": "TRUE_MISSING_DATA"
+  }
+}
