@@ -31,10 +31,15 @@ Imports:
     readr,
     readxl,
     rlang,
-    stringr
+    stringr,
 Suggests:
     knitr,
     rmarkdown,
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    usethis,
+    glue,
+    fs,
+    rstudioapi,
+    rlang
 RoxygenNote: 7.3.1
 VignetteBuilder: knitr
