@@ -15,6 +15,7 @@
 #' \dontrun{
 #' create_blank_pipeline("~/Desktop", "my_pipeline")
 #' }
+#' @export
 create_blank_pipeline <- function(root_path = "", pipeline_folder_name = "demo-pipeline") {
 
   # create path -----
