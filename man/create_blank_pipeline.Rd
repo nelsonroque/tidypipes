@@ -4,22 +4,31 @@
 \alias{create_blank_pipeline}
 \title{Create a Blank Data Analysis Pipeline}
 \usage{
-create_blank_pipeline(root_path = "", pipeline_folder_name = "demo-pipeline")
+create_blank_pipeline(
+  root_path = getwd(),
+  pipeline_folder_name = "demo-pipeline",
+  additional_folders = NULL,
+  verbose = TRUE
+)
 }
 \arguments{
-\item{root_path}{Character. The root path where the pipeline folder should be created. Default is an empty string.}
+\item{root_path}{Character. The root path where the pipeline folder should be created. Default is the current working directory.}
 
 \item{pipeline_folder_name}{Character. The name of the pipeline folder to be created. Default is "demo-pipeline".}
+
+\item{additional_folders}{Character vector. Optional additional subfolders to create inside the pipeline.}
+
+\item{verbose}{Logical. If TRUE, prints messages indicating folder and file creation. Default is TRUE.}
 }
 \value{
 None. The function creates folders and files in the specified location.
 }
 \description{
-This function creates a new project structure for a data analysis pipeline, including
-folders for data, plots, and tidy data, as well as README and TODO files.
+This function initializes a structured project for a data analysis pipeline,
+including essential folders (`data`, `plots`, `tidy`, `vignettes`) and README files.
 }
 \examples{
 \dontrun{
-create_blank_pipeline("~/Desktop", "my_pipeline")
+create_blank_pipeline("~/Desktop", "my_pipeline", additional_folders = c("scripts", "models"))
 }
 }

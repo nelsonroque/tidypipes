@@ -2,30 +2,30 @@
 % Please edit documentation in R/append_date_features.R
 \name{append_datetime_features}
 \alias{append_datetime_features}
-\title{Append Date Features to a Data Frame}
+\title{Append Date and Time Features to a Data Frame}
 \usage{
 append_datetime_features(
   .data,
-  dt_var = NA,
+  dt_var,
   time_features = TRUE,
   time_features_rounded = TRUE
 )
 }
 \arguments{
-\item{.data}{A data frame containing the time variable.}
+\item{.data}{A data frame containing the date-time variable.}
 
-\item{dt_var}{A string specifying the name of the time variable column in the data frame.}
+\item{dt_var}{A string specifying the name of the date-time variable column.}
 
-\item{time_features}{A logical for time features}
+\item{time_features}{Logical. If TRUE, appends additional time-based features. Default is TRUE.}
 
-\item{time_features_rounded}{A logical value indicating whether to append rounded date timestamps. Defaults to TRUE.}
+\item{time_features_rounded}{Logical. If TRUE, appends rounded timestamps. Default is TRUE.}
 }
 \value{
 A data frame with appended date and time features.
 }
 \description{
-This function appends various date and time features to a data frame based on a specified time variable.
-It can also append rounded date timestamps if requested.
+This function appends various date and time features to a data frame based on a specified
+date-time variable. It also optionally adds rounded time values.
 }
 \examples{
 df <- data.frame(time_stamp = c("2023-06-15 12:34:56", "2023-06-16 13:45:10"))

@@ -2,10 +2,16 @@
 % Please edit documentation in R/get_col_types.R
 \name{get_col_types}
 \alias{get_col_types}
-\title{tidypipes: Get column types}
+\title{Get Column Types in a Data Frame}
 \usage{
 get_col_types(data)
 }
+\arguments{
+\item{data}{A data frame or tibble.}
+}
+\value{
+A tibble with two columns: `variable` (column name) and `class` (data type).
+}
 \description{
-tidypipes: Get column types
+This function returns a tibble with each variable's name and class.
 }

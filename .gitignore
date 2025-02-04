@@ -52,3 +52,4 @@ R/notes.txt
 notes.txt
 .DS_Store
 tmp/wh.txt
+.webhook_env

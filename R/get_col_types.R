@@ -7,7 +7,7 @@
 #' @import tidyverse
 get_col_types <- function(data) {
   # Validate input
-  if (!is.data.frame(data)) {
+  if (!tidypipes::is_dataframe_or_tibble(data)) {
     stop("Input must be a data frame or tibble.")
   }
 

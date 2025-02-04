@@ -1,10 +1,13 @@
 #' Create a Blank Data Analysis Pipeline
 #'
-#' This function creates a new project structure for a data analysis pipeline, including
-#' folders for data, plots, and tidy data, as well as README and TODO files.
+#' This function initializes a structured project for a data analysis pipeline,
+#' including essential folders (`data`, `plots`, `tidy`, `vignettes`) and README files.
 #'
-#' @param root_path Character. The root path where the pipeline folder should be created. Default is an empty string.
+#' @param root_path Character. The root path where the pipeline folder should be created. Default is the current working directory.
 #' @param pipeline_folder_name Character. The name of the pipeline folder to be created. Default is "demo-pipeline".
+#' @param additional_folders Character vector. Optional additional subfolders to create inside the pipeline.
+#' @param verbose Logical. If TRUE, prints messages indicating folder and file creation. Default is TRUE.
+#'
 #' @return None. The function creates folders and files in the specified location.
 #' @import usethis
 #' @importFrom glue glue
@@ -13,50 +16,63 @@
 #' @importFrom rlang is_interactive
 #' @examples
 #' \dontrun{
-#' create_blank_pipeline("~/Desktop", "my_pipeline")
+#' create_blank_pipeline("~/Desktop", "my_pipeline", additional_folders = c("scripts", "models"))
 #' }
 #' @export
-create_blank_pipeline <- function(root_path = "", pipeline_folder_name = "demo-pipeline") {
+create_blank_pipeline <- function(root_path = getwd(),
+                                  pipeline_folder_name = "demo-pipeline",
+                                  additional_folders = NULL,
+                                  verbose = TRUE) {
 
-  # create path -----
-  pp = glue::glue("{root_path}/{pipeline_folder_name}")
+  # Construct pipeline path
+  pipeline_path <- file.path(root_path, pipeline_folder_name)
 
-  # create project -----
+  # Function to create directories safely
+  create_dir_safe <- function(path) {
+    if (!dir.exists(path)) {
+      fs::dir_create(path, mode = "u=rwx,go=rx", recurse = TRUE)
+      if (verbose) message("Created directory: ", path)
+    }
+  }
+
+  # Function to create files safely
+  create_file_safe <- function(path) {
+    if (!file.exists(path)) {
+      fs::file_create(path)
+      if (verbose) message("Created file: ", path)
+    }
+  }
+
+  # Create the project directory
+  create_dir_safe(pipeline_path)
+
+  # Initialize as an RStudio project if available
   usethis::create_project(
-    pp,
+    path = pipeline_path,
     rstudio = rstudioapi::isAvailable(),
     open = rlang::is_interactive()
   )
 
-  # create documentation files ----
-  fs::file_create(glue::glue("{pp}/readme.md"),
-                  mode = "u=rw,go=r")
+  # Define default folders and files
+  default_folders <- c("vignettes", "data", "plots", "tidy")
+  default_files <- c("README.md", "TODO.md", "NEWS.md")
 
-  fs::file_create(glue::glue("{pp}/todo.md"),
-                  mode = "u=rw,go=r")
+  # Create default folders
+  lapply(file.path(pipeline_path, default_folders), create_dir_safe)
 
-  # create `data` folder ----
-  fs::dir_create(glue::glue("{pp}/data"),
-                 mode = "u=rwx,go=rx",
-                 recurse = TRUE)
+  # Create default files
+  lapply(file.path(pipeline_path, default_files), create_file_safe)
 
-  fs::file_create(glue::glue("{pp}/data/.gitkeep"),
-                  mode = "u=rw,go=r")
+  # Add `.gitkeep` files inside each folder to ensure empty folders are tracked
+  lapply(file.path(pipeline_path, default_folders, ".gitkeep"), create_file_safe)
 
-  # create `plots` folder ----
-  fs::dir_create(glue::glue("{pp}/plots"),
-                 mode = "u=rwx,go=rx",
-                 recurse = TRUE)
+  # Create a sample vignette
+  create_file_safe(file.path(pipeline_path, "vignettes", "hello.qmd"))
 
-  fs::file_create(glue::glue("{pp}/plots/.gitkeep"),
-                  mode = "u=rw,go=r")
+  # Create additional user-specified folders
+  if (!is.null(additional_folders)) {
+    lapply(file.path(pipeline_path, additional_folders), create_dir_safe)
+  }
 
-  # create `tidy` folder ----
-  fs::dir_create(glue::glue("{pp}/tidy"),
-                 mode = "u=rwx,go=rx",
-                 recurse = TRUE)
-
-  fs::file_create(glue::glue("{pp}/tidy/.gitkeep"),
-                  mode = "u=rw,go=r")
-
+  message("Project setup complete at: ", pipeline_path)
 }

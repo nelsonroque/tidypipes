@@ -1,12 +1,12 @@
-#' Append Date Features to a Data Frame
+#' Append Date and Time Features to a Data Frame
 #'
-#' This function appends various date and time features to a data frame based on a specified time variable.
-#' It can also append rounded date timestamps if requested.
+#' This function appends various date and time features to a data frame based on a specified
+#' date-time variable. It also optionally adds rounded time values.
 #'
-#' @param .data A data frame containing the time variable.
-#' @param dt_var A string specifying the name of the time variable column in the data frame.
-#' @param time_features A logical for time features
-#' @param time_features_rounded A logical value indicating whether to append rounded date timestamps. Defaults to TRUE.
+#' @param .data A data frame containing the date-time variable.
+#' @param dt_var A string specifying the name of the date-time variable column.
+#' @param time_features Logical. If TRUE, appends additional time-based features. Default is TRUE.
+#' @param time_features_rounded Logical. If TRUE, appends rounded timestamps. Default is TRUE.
 #'
 #' @return A data frame with appended date and time features.
 #' @export
@@ -16,72 +16,70 @@
 #' append_datetime_features(df, dt_var = "time_stamp")
 #'
 #' @importFrom dplyr mutate select
-#' @importFrom lubridate ymd_hms as_date month day year week hour minute wday yday round_date
+#' @importFrom lubridate ymd_hms ymd as_date month day year week wday yday hour minute round_date
 append_datetime_features <- function(.data,
-                                     dt_var = NA,
+                                     dt_var,
                                      time_features = TRUE,
                                      time_features_rounded = TRUE) {
-  # Convert dt_var to appropriate date or date-time object
-  if (inherits(.data[[dt_var]], "POSIXct") || inherits(.data[[dt_var]], "POSIXt")) {
-    data_dates <- .data %>%
-      mutate(dt_datetime = !!rlang::sym(dt_var))
-  } else {
-    data_dates <- .data %>%
-      mutate(dt_datetime = lubridate::ymd_hms(!!rlang::sym(dt_var), quiet = TRUE))
 
-    # If conversion to ymd_hms fails, try converting to Date
-    if (all(is.na(data_dates$dt_datetime))) {
-      data_dates <- .data %>%
-        mutate(dt_datetime = lubridate::ymd(!!rlang::sym(dt_var), quiet = TRUE))
+  if (!dt_var %in% names(.data)) {
+    stop("The specified date-time variable does not exist in the data frame.")
+  }
+
+  # Helper function to convert date column
+  parse_datetime <- function(x) {
+    parsed_dt <- lubridate::ymd_hms(x, quiet = TRUE)
+    if (all(is.na(parsed_dt))) parsed_dt <- lubridate::ymd(x, quiet = TRUE)
+    return(parsed_dt)
+  }
+
+  # Convert date column
+  .data <- .data %>%
+    mutate(dt_datetime = parse_datetime(!!rlang::sym(dt_var)))
+
+  if (all(is.na(.data$dt_datetime))) {
+    stop("Failed to parse the date-time column. Ensure it is in a recognized format.")
+  }
+
+  # Append base date features
+  .data <- .data %>%
+    mutate(
+      dt_date = as_date(dt_datetime),
+      dt_month = month(dt_datetime),
+      dt_day = day(dt_datetime),
+      dt_yday = yday(dt_datetime),
+      dt_year = year(dt_datetime),
+      dt_week = week(dt_datetime),
+      dt_weekday_val = wday(dt_datetime),
+      dt_weekday_label = wday(dt_datetime, label = TRUE),
+      dt_is_weekend = dt_weekday_label %in% c("Sat", "Sun")
+    )
+
+  # Append additional time features if requested
+  if (time_features) {
+    .data <- .data %>%
+      mutate(
+        dt_hms = format(dt_datetime, "%H:%M:%S"),
+        dt_hour = hour(dt_datetime),
+        dt_minute = minute(dt_datetime)
+      )
+  }
+
+  # Append rounded date timestamps if requested
+  if (time_features_rounded) {
+    rounding_intervals <- c(5, 10, 15, 30, 60)
+
+    for (interval in rounding_intervals) {
+      round_col <- glue::glue("dt_datetimestamp_round_{interval}min")
+      time_col <- glue::glue("dt_timestamponly_round_{interval}min")
+
+      .data <- .data %>%
+        mutate(
+          !!round_col := round_date(dt_datetime, paste(interval, "minutes")),
+          !!time_col := format(!!rlang::sym(round_col), "%H:%M:%S")
+        )
     }
   }
 
-  #' Append date features
-  data_dates <- data_dates %>%
-    #' Convert dt_var to date time object using ymd_hms
-    mutate(
-      dt_date = lubridate::as_date(dt_datetime),
-      dt_month = lubridate::month(dt_datetime),
-      dt_day = lubridate::day(dt_datetime),
-      dt_yday = lubridate::yday(dt_datetime),
-      dt_year = lubridate::year(dt_datetime),
-      dt_week = lubridate::week(dt_datetime),
-      dt_weekday_val = lubridate::wday(dt_datetime),
-      dt_weekday_label = lubridate::wday(dt_datetime, label = TRUE)
-    ) %>%
-    mutate(dt_is_weekend = dt_weekday_label %in% c("Sat", "Sun"))
-
-  if (time_features) {
-    #' Append date features
-    data_dates <- data_dates %>%
-      #' Append date and time features
-      mutate(
-        dt_hms = format(dt_datetime, "%H:%M:%S"),
-        dt_hour = lubridate::hour(dt_datetime),
-        dt_minute = lubridate::minute(dt_datetime),
-        dt_weekday_val = lubridate::wday(dt_datetime)
-      )
-  }
-
-  #' Append rounded date timestamps if requested
-  if (time_features_rounded) {
-    data_dates <- data_dates %>%
-      #' Append rounded date timestamps
-      mutate(
-        dt_datetimestamp_round_5min = lubridate::round_date(dt_datetime, "5 minutes"),
-        dt_datetimestamp_round_10min = lubridate::round_date(dt_datetime, "10 minutes"),
-        dt_datetimestamp_round_15min = lubridate::round_date(dt_datetime, "15 minutes"),
-        dt_datetimestamp_round_30min = lubridate::round_date(dt_datetime, "30 minutes"),
-        dt_datetimestamp_round_60min = lubridate::round_date(dt_datetime, "60 minutes")
-      ) %>%
-      #' Append rounded timestamps
-      mutate(
-        dt_timestamponly_round_5min = format(dt_datetimestamp_round_5min, "%H:%M:%S"),
-        dt_timestamponly_round_10min = format(dt_datetimestamp_round_10min, "%H:%M:%S"),
-        dt_timestamponly_round_15min = format(dt_datetimestamp_round_15min, "%H:%M:%S"),
-        dt_timestamponly_round_30min = format(dt_datetimestamp_round_30min, "%H:%M:%S"),
-        dt_timestamponly_round_60min = format(dt_datetimestamp_round_60min, "%H:%M:%S")
-      )
-  }
-  return(data_dates)
+  return(.data)
 }

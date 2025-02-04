@@ -2,19 +2,30 @@
 % Please edit documentation in R/get_package_report.R
 \name{get_package_report}
 \alias{get_package_report}
-\title{Get Installed Packages Report}
+\title{Get Installed Packages Report and Export}
 \usage{
-get_package_report()
+get_package_report(exclude_base = TRUE, output_dir = NULL, format = "csv")
+}
+\arguments{
+\item{exclude_base}{Logical. If TRUE, excludes base R packages. Default is TRUE.}
+
+\item{output_dir}{The directory where the package report should be saved. Defaults to NULL (no file export).}
+
+\item{format}{The output file format. Can be "csv" (default) or "txt".}
 }
 \value{
-A tibble containing the details of the installed packages.
+A tibble containing the details of installed packages.
 }
 \description{
 This function generates a report of the currently installed packages,
-returning the information as a cleaned tibble.
+returning the information as a cleaned tibble. Optionally, it can
+filter out base R packages and export the report to a file.
 }
 \examples{
-# Generate a report of the installed packages
-\dontrun{get_package_report()}
+# Get installed package report without exporting
+get_package_report()
+
+# Get installed package report and save it to a CSV file
+\dontrun{get_package_report(output_dir = "reports", format = "csv")}
 
 }
