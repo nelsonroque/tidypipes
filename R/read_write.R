@@ -9,9 +9,9 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{read_data_file("data.csv")}
-#' \dontrun{read_data_file("data.json")}
-read_data_file <- function(file_path) {
+#' \dontrun{read_it("data.csv")}
+#' \dontrun{read_it("data.json")}
+read_it <- function(file_path) {
   # Validate file existence
   if (!file.exists(file_path)) {
     stop(paste0("File not found: ", file_path))
@@ -52,9 +52,9 @@ read_data_file <- function(file_path) {
 #' @export
 #'
 #' @examples
-#' \dontrun{write_data_file(mtcars, "data.csv")}
-#' \dontrun{write_data_file(mtcars, "data.json")}
-write_data_file <- function(data, file_path) {
+#' \dontrun{write_it(mtcars, "data.csv")}
+#' \dontrun{write_it(mtcars, "data.json")}
+write_it <- function(data, file_path) {
   # Ensure the provided data is valid
   if (!is.data.frame(data) && !is.list(data)) {
     stop("The data must be a data frame or a list.")

@@ -10,3 +10,8 @@ Study changelog format and links to Github issues. Eventually want to be that sp
 
 save_path? out_path? output? output_path?
 filename? file? filen? fn? file_path?
+
+
+# DO WE
+
+integrate rio: https://gesistsa.github.io/rio/

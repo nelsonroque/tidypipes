@@ -11,36 +11,40 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports: 
-    magrittr,
-    lubridate,
-    dplyr,
-    janitor,
-    tidyr,
-    haven, 
-    todor,
-    digest,
-    tibble,
-    writexl,
     arrow,
-    jsonlite,
-    glue,
     cli,
-    tidyselect,
-    withr,
+    digest,
+    dplyr,
+    DT,
+    fs,
+    glue,
+    haven, 
+    httr,
+    janitor,
+    jsonlite,
+    lubridate,
+    magrittr,
     purrr,
     readr,
     readxl,
     rlang,
+    shiny,
     stringr,
-     DT, fs, httr, rstudioapi, shiny, tidyverse, usethis
-Suggests:
-    knitr,
-    rmarkdown,
-    testthat (>= 3.0.0),
+    tibble,
+    tidyselect,
+    tidyr,
+    todor,
     usethis,
-    glue,
+    withr,
+    writexl
+Suggests:
     fs,
+    glue,
+    knitr,
+    rlang,
+    rmarkdown,
     rstudioapi,
-    rlang
+    testthat (>= 3.0.0),
+    usethis
 RoxygenNote: 7.3.2
 VignetteBuilder: knitr

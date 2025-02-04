@@ -14,6 +14,16 @@ https://github.com/easystats
 
 https://github.com/easystats/datawizard
 
+https://gesistsa.github.io/rio/
+
+https://github.com/Stan125/GREA/
+
+https://gallery.shinyapps.io/rioweb
+
+https://github.com/dreamRs/datamods
+
+
+
 # 🚀 Getting Started
 
 | Type | Source | Command |

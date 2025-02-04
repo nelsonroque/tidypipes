@@ -22,7 +22,7 @@ open_codebook_creator <- function(id) {
         downloadButton(ns("download_codebook"), "Download Codebook")
       ),
       mainPanel(
-        DTOutput(ns("codebook_table"))
+        DT::DTOutput(ns("codebook_table"))
       )
     )
   )

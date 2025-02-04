@@ -12,3 +12,13 @@ devtools::build()
 # Preview your site locally before publishing ----
 pkgdown::build_site()
 pkgdown::preview_site()
+
+
+# open codebook creator
+ui <- open_codebook_creator("codebook_ui")
+
+server <- function(input, output, session) {
+  codebook_server("codebook_ui")
+}
+
+shiny::shinyApp(ui, server)
