@@ -12,11 +12,14 @@ editor: visual
 library(tidypipes)
 
 # e.g., a specific pipeline step -----
-pipeline_result <- tidypipes::run_pipeline_step(step = "test_step.R",
-                             pipeline_path = "~/Desktop/pipeline/")
+#pipeline_result <- tidypipes::run_pipeline_step(step = "test_step.R",
+                             #pipeline_path = "~/Desktop/pipeline/")
 
 # pipeline_results <- tidypipes::run_pipeline_from_config(config_file = "config.json")
 
+```
+
+```{r}
 # get environment report -----
 tidypipes::get_env_report()
 
@@ -29,26 +32,31 @@ tidypipes::get_todo_report()
 # get timestamps for filenames -----
 tidypipes::get_fn_ts()
 tidypipes::get_fn_ts(format="%m-%d_%H-%M")
+```
 
+```{r}
 # write any common file type ------
 df = data.frame(x=rnorm(100))
 tidypipes::write_data_file(data = df,
-                           file_path = 'tmp/test.csv')
+                           file_path = '../tmp/test.csv')
 
 tidypipes::write_data_file(data = df,
-                           file_path = 'tmp/test.xpt')
+                           file_path = '../tmp/test.xpt')
 
 tidypipes::write_data_file(data = df,
-                           file_path = 'tmp/test.xlsx')
+                           file_path = '../tmp/test.xlsx')
 
 tidypipes::write_data_file(data = df,
-                           file_path = 'tmp/test.parquet')
+                           file_path = '../tmp/test.parquet')
 
+```
+
+```{r}
 # load datasets -----
-tf_csv = tidypipes::read_data_file(file_path = 'tmp/test.csv')
-tf_xpt = tidypipes::read_data_file(file_path = 'tmp/test.xpt')
-tf_xlsx = tidypipes::read_data_file(file_path = 'tmp/test.xlsx')
-tf_parquet = tidypipes::read_data_file(file_path = 'tmp/test.parquet')
+tf_csv = tidypipes::read_data_file(file_path = '../tmp/test.csv')
+tf_xpt = tidypipes::read_data_file(file_path = '../tmp/test.xpt')
+tf_xlsx = tidypipes::read_data_file(file_path = '../tmp/test.xlsx')
+tf_parquet = tidypipes::read_data_file(file_path = '../tmp/test.parquet')
 
 # validate data ------
 # sum(tf_csv$x) == sum(tf_xpt$x)
@@ -57,16 +65,20 @@ tf_parquet = tidypipes::read_data_file(file_path = 'tmp/test.parquet')
 # sum(tf_xlsx$x) == sum(tf_parquet$x)
 # sum(tf_xpt$x) == sum(tf_parquet$x)
 # sum(tf_xpt$x) == sum(tf_xlsx$x)
+```
 
+```{r}
 # append date features -----
-
+libary(tidyverse)
 tf_dates = tibble::tibble(dt = sample(seq(anytime::anytime("2000-01-01 00:00:00"),
                                           anytime::anytime("2024-01-01 00:00:00"), 1), 100)) %>%
 tidypipes::append_datetime_features(.,
                                     dt_var = 'dt',
                                     time_features_rounded=F) %>%
   arrange(dt_datetime)
+```
 
+```{r}
 tf_dates2 = tibble::tibble(dt = sample(seq(anytime::anydate("2000-01-01"),
                                           anytime::anydate("2024-01-01"), 1), 100)) %>%
   tidypipes::append_datetime_features(.,
@@ -74,24 +86,26 @@ tf_dates2 = tibble::tibble(dt = sample(seq(anytime::anydate("2000-01-01"),
                                       time_features = F,
                                       time_features_rounded=F) %>%
   arrange(dt_datetime)
+```
 
+```{r}
 # create simple codebook (with notes field to be filled in by human)
 # TODO: OpenAI integration for notes suggestions from column names
 tidypipes::create_simple_codebook(tf_dates2)
+```
 
+```{r}
 tidypipes::extract_variables_from_file("tmp/test.csv")
 
 tidypipes::extract_variables_from_file_list(list.files("tmp/",
                                                        recursive = T,
-                                                       full.names = T))
+                                                   full.names = T))
+```
 
-
-
+```{r}
 # Example usage
 # tidypipes::send_teams_webhook_message(webhook_url='[INSERT TEAMS WEBHOOK URL]',
 #                                 "Status Update",
 #                                 "Step 1: Succesfully ran!")
-
-
 
 ```

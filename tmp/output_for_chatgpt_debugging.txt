@@ -1,207 +1,0 @@
-NULL
-══ Documenting ═════════════════════════════════════════════════════════════
-
-══ Building ════════════════════════════════════════════════════════════════
-Setting env vars:
-• CFLAGS    : -Wall -pedantic
-• CXXFLAGS  : -Wall -pedantic
-• CXX11FLAGS: -Wall -pedantic
-• CXX14FLAGS: -Wall -pedantic
-• CXX17FLAGS: -Wall -pedantic
-• CXX20FLAGS: -Wall -pedantic
-── R CMD build ─────────────────────────────────────────────────────────────
-  ✔  checking for file ‘/Users/nur375/Documents/GitHub/tidypipes/DESCRIPTION’
-  ─  preparing ‘tidypipes’: (350ms)
-   checking DESCRIPTION meta-information ...  ✔  checking DESCRIPTION meta-information
-  ─  checking for LF line-endings in source and make files and shell scripts
-  ─  checking for empty or unneeded directories
-     Omitted ‘LazyData’ from DESCRIPTION
-  ─  building ‘tidypipes_0.1.2.tar.gz’
-     Warning: invalid uid value replaced by that for user 'nobody'
-   Warning: invalid gid value replaced by that for user 'nobody'
-     
-══ Checking ════════════════════════════════════════════════════════════════
-Setting env vars:
-• _R_CHECK_CRAN_INCOMING_REMOTE_               : FALSE
-• _R_CHECK_CRAN_INCOMING_                      : FALSE
-• _R_CHECK_FORCE_SUGGESTS_                     : FALSE
-• _R_CHECK_PACKAGES_USED_IGNORE_UNUSED_IMPORTS_: FALSE
-• NOT_CRAN                                     : true
-── R CMD check ─────────────────────────────────────────────────────────────
-  ─  using log directory ‘/private/var/folders/s5/cdfgl21s67g7kcj9ts4x8pnn4njnsy/T/RtmpfsM4z3/filee74554da5f9e/tidypipes.Rcheck’
-─  using R version 4.3.1 (2023-06-16)
--  ─  using platform: aarch64-apple-darwin20 (64-bit)
-─  R was compiled by
-       Apple clang version 14.0.0 (clang-1400.0.29.202)
-       GNU Fortran (GCC) 12.2.0
-─  running under: macOS Ventura 13.0
-─  using session charset: UTF-8
-\  ─  using options ‘--no-manual --as-cran’
-|  ✔  checking for file ‘tidypipes/DESCRIPTION’
-─  checking extension type ... Package
-─  this is package ‘tidypipes’ version ‘0.1.2’
-─  package encoding: UTF-8
-   checking package namespace information .../  ✔  checking package namespace information
-   checking package dependencies ...-\|/-  N  checking package dependencies (815ms)
-   Imports includes 21 non-default packages.
-   Importing from so many packages makes the package vulnerable to any of
-   them becoming unavailable.  Move as many as possible to Suggests and
-   use conditionally.
-\  ✔  checking if this is a source package
-   checking if there is a namespace ...|  ✔  checking if there is a namespace
-/     checking for executable files ...-  ✔  checking for executable files
-\  ✔  checking for hidden files and directories
-✔  checking for portable file names
-|  ✔  checking for sufficient/correct file permissions
-✔  checking serialization versions
-   checking whether package ‘tidypipes’ can be installed .../-\|/-\|/-  ✔  checking whether package ‘tidypipes’ can be installed (1.8s)
-\     checking installed package size ...|  ✔  checking installed package size
-/     checking package directory ...-  ✔  checking package directory
-   checking for future file timestamps ...\|  ✔  checking for future file timestamps
-/     checking DESCRIPTION meta-information ...-  ✔  checking DESCRIPTION meta-information
-\  N  checking top-level files
-   Non-standard file/directory found at top level:
-     ‘test-data’
-✔  checking for left-over files
-✔  checking index information
-   checking package subdirectories ...|  ✔  checking package subdirectories
-/     checking R files for non-ASCII characters ...-  ✔  checking R files for non-ASCII characters
-  \     checking R files for syntax errors ...|  ✔  checking R files for syntax errors
-/     checking whether the package can be loaded ...-\  ✔  checking whether the package can be loaded (339ms)
-   checking whether the package can be loaded with stated dependencies ...|/  ✔  checking whether the package can be loaded with stated dependencies
-   checking whether the package can be unloaded cleanly ...-\  ✔  checking whether the package can be unloaded cleanly
-   checking whether the namespace can be loaded with stated dependencies ...|/  ✔  checking whether the namespace can be loaded with stated dependencies
-   checking whether the namespace can be unloaded cleanly ...-\  ✔  checking whether the namespace can be unloaded cleanly (353ms)
-|     checking loading without being on the library search path .../-\  ✔  checking loading without being on the library search path (422ms)
-|/     checking dependencies in R code ...-\|  W  checking dependencies in R code (812ms)
-   '::' or ':::' import not declared from: ‘httr’
-   checking S3 generic/method consistency .../-  ✔  checking S3 generic/method consistency
-   checking replacement functions ...\|  ✔  checking replacement functions
-   checking foreign function calls .../-  ✔  checking foreign function calls
-   checking R code for possible problems ...\|/-\|/-\|/-  N  checking R code for possible problems (2.3s)
-   append_datetime_features: no visible binding for global variable
-     ‘dt_datetime’
-   append_datetime_features: no visible binding for global variable
-     ‘dt_weekday_label’
-   append_datetime_features: no visible binding for global variable
-     ‘dt_datetimestamp_round_5min’
-   append_datetime_features: no visible binding for global variable
-     ‘dt_datetimestamp_round_10min’
-   append_datetime_features: no visible binding for global variable
-     ‘dt_datetimestamp_round_15min’
-   append_datetime_features: no visible binding for global variable
-     ‘dt_datetimestamp_round_30min’
-   append_datetime_features: no visible binding for global variable
-     ‘dt_datetimestamp_round_60min’
-   create_simple_codebook: no visible global function definition for
-     ‘is_tibble’
-   get_env_report: no visible global function definition for ‘everything’
-   get_env_report: no visible binding for global variable ‘rowname’
-   get_package_report: no visible global function definition for
-     ‘installed.packages’
-   run_pipeline_step: no visible binding for global variable ‘.’
-   run_pipeline_step : <anonymous>: no visible binding for global variable
-     ‘.’
-   t_tibble: no visible binding for global variable ‘rowname’
-   Undefined global functions or variables:
-     . dt_datetime dt_datetimestamp_round_10min
-     dt_datetimestamp_round_15min dt_datetimestamp_round_30min
-     dt_datetimestamp_round_5min dt_datetimestamp_round_60min
-     dt_weekday_label everything installed.packages is_tibble rowname
-   Consider adding
-     importFrom("utils", "installed.packages")
-   to your NAMESPACE file.
-\     checking Rd files ...|  ✔  checking Rd files
-   checking Rd metadata .../  ✔  checking Rd metadata
-   checking Rd line widths ...-  ✔  checking Rd line widths
-   checking Rd cross-references ...\  ✔  checking Rd cross-references
-   checking for missing documentation entries ...|/  ✔  checking for missing documentation entries
-   checking for code/documentation mismatches ...-\|/-  ✔  checking for code/documentation mismatches (854ms)
-   checking Rd \usage sections ...\|/  ✔  checking Rd \usage sections (422ms)
-   checking Rd contents ...-  ✔  checking Rd contents
-   checking for unstated dependencies in examples ...\  ✔  checking for unstated dependencies in examples
-|     checking files in ‘vignettes’ .../  W  checking files in ‘vignettes’
--     Files in the 'vignettes' directory but no files in 'inst/doc':
-     ‘getting_started.qmd’
-\     checking examples ...|/-\|/-  ✔  checking examples (1.4s)
-\  N  checking for non-standard things in the check directory
-   Found the following files/directories:
-     ‘log.txt’
-   checking for detritus in the temp directory ...|  ✔  checking for detritus in the temp directory
-/     
-   See
-     ‘/private/var/folders/s5/cdfgl21s67g7kcj9ts4x8pnn4njnsy/T/RtmpfsM4z3/filee74554da5f9e/tidypipes.Rcheck/00check.log’
-   for details.
-   
-   
--\| ── R CMD check results ──────────────────────────────── tidypipes 0.1.2 ────
-Duration: 13.2s
-
-❯ checking dependencies in R code ... WARNING
-  '::' or ':::' import not declared from: ‘httr’
-
-❯ checking files in ‘vignettes’ ... WARNING
-  Files in the 'vignettes' directory but no files in 'inst/doc':
-    ‘getting_started.qmd’
-
-❯ checking package dependencies ... NOTE
-  Imports includes 21 non-default packages.
-  Importing from so many packages makes the package vulnerable to any of
-  them becoming unavailable.  Move as many as possible to Suggests and
-  use conditionally.
-
-❯ checking top-level files ... NOTE
-  Non-standard file/directory found at top level:
-    ‘test-data’
-
-❯ checking R code for possible problems ... NOTE
-  append_datetime_features: no visible binding for global variable
-    ‘dt_datetime’
-  append_datetime_features: no visible binding for global variable
-    ‘dt_weekday_label’
-  append_datetime_features: no visible binding for global variable
-    ‘dt_datetimestamp_round_5min’
-  append_datetime_features: no visible binding for global variable
-    ‘dt_datetimestamp_round_10min’
-  append_datetime_features: no visible binding for global variable
-    ‘dt_datetimestamp_round_15min’
-  append_datetime_features: no visible binding for global variable
-    ‘dt_datetimestamp_round_30min’
-  append_datetime_features: no visible binding for global variable
-    ‘dt_datetimestamp_round_60min’
-  create_simple_codebook: no visible global function definition for
-    ‘is_tibble’
-  get_env_report: no visible global function definition for ‘everything’
-  get_env_report: no visible binding for global variable ‘rowname’
-  get_package_report: no visible global function definition for
-    ‘installed.packages’
-  run_pipeline_step: no visible binding for global variable ‘.’
-  run_pipeline_step : <anonymous>: no visible binding for global variable
-    ‘.’
-  t_tibble: no visible binding for global variable ‘rowname’
-  Undefined global functions or variables:
-    . dt_datetime dt_datetimestamp_round_10min
-    dt_datetimestamp_round_15min dt_datetimestamp_round_30min
-    dt_datetimestamp_round_5min dt_datetimestamp_round_60min
-    dt_weekday_label everything installed.packages is_tibble rowname
-  Consider adding
-    importFrom("utils", "installed.packages")
-  to your NAMESPACE file.
-
-❯ checking for non-standard things in the check directory ... NOTE
-  Found the following files/directories:
-    ‘log.txt’
-
-0 errors ✔ | 2 warnings ✖ | 4 notes ✖
-── R CMD build ─────────────────────────────────────────────────────────────
-     checking for file ‘/Users/nur375/Documents/GitHub/tidypipes/DESCRIPTION’ ...  ✔  checking for file ‘/Users/nur375/Documents/GitHub/tidypipes/DESCRIPTION’
-  ─  preparing ‘tidypipes’: (395ms)
-   checking DESCRIPTION meta-information ...  ✔  checking DESCRIPTION meta-information
-  ─  checking for LF line-endings in source and make files and shell scripts
-  ─  checking for empty or unneeded directories
-     Omitted ‘LazyData’ from DESCRIPTION
-  ─  building ‘tidypipes_0.1.2.tar.gz’
-     Warning: invalid uid value replaced by that for user 'nobody'
-   Warning: invalid gid value replaced by that for user 'nobody'
-     
-[1] "/Users/nur375/Documents/GitHub/tidypipes_0.1.2.tar.gz"

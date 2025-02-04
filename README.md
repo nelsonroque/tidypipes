@@ -1,4 +1,9 @@
-# tidypipes
+# tidypipes <img src="man/figures/logo.png" align="right" />
+An R package to help you simplify data pipelines.
+
+# Overview
+A lightweight R package with various vignettes.
+
 ## A Dataset Utility Package
 
 A comprehensive R package providing utility functions for dataset analysis and logging. This package includes functions to generate dataset statistics, log process steps, detect TODO comments, and more, all using tidyverse principles.
@@ -7,7 +12,7 @@ A comprehensive R package providing utility functions for dataset analysis and l
 https://github.com/easystats
 https://github.com/easystats/datawizard
 
-# Installation
+# 🚀 Getting Started | Installation
 
 | Type | Source | Command |
 |----|----|----|
@@ -149,3 +154,8 @@ Logs the details of each step in a process, including a timestamp, process ID, s
 
 variable vs column_name
 file vs filename
+
+# Contributions
+📢 Contributions welcome! Feel free to open an issue or submit a pull request. (CODE OF CONDUCT LINK GOES HERE)
+
+Let me know if you want a more detailed roadmap or tweaks! 🚀

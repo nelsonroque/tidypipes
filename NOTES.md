@@ -19,3 +19,9 @@
 # # export table ----
 # tsfn = format(Sys.time(), "%Y-%m-%d_%H-%M-%S")
 # write_csv(variable_names, glue("variable_names_{tsfn}.csv"))
+
+
+# STUDY GUIDE
+
+https://rstudio.github.io/renv/news/index.html
+Study changelog format and links to Github issues. Eventually want to be that specific.
