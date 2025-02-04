@@ -1,0 +1,40 @@
+{
+  "pipeline_path": "R/pipeline/",
+  "steps": [
+    {
+      "id": "step1",
+      "script": "step1.R",
+      "depends_on": [],
+      "params": {
+        "input_file": "data1.csv",
+        "threshold": 0.8
+      },
+      "description": "Load data and preprocess",
+      "parallel": false,
+      "retries": 2
+    },
+    {
+      "id": "step2",
+      "script": "step2.R",
+      "depends_on": ["step1"],
+      "params": {
+        "model_type": "random_forest",
+        "num_trees": 100
+      },
+      "description": "Train model using step1 output",
+      "parallel": false,
+      "retries": 1
+    },
+    {
+      "id": "step3",
+      "script": "step3.R",
+      "depends_on": ["step1"],
+      "params": {
+        "metric": "accuracy"
+      },
+      "description": "Evaluate model independently",
+      "parallel": true,
+      "retries": 3
+    }
+  ]
+}
