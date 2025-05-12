@@ -1,24 +1,20 @@
-# Load usethis
+#' Build & Document `tidypipes` Package
+#' Run this from the project root during dev
+
+# 1. Load core devtools
 library(usethis)
+library(devtools)
+library(pkgdown)
 
-# Automatically generate and manage NAMESPACE file
+# 2. Refresh NAMESPACE & Rd docs
 usethis::use_namespace()
+document()   # generates Rd files
 
-# build package ----
-devtools::check()
-devtools::document()
-devtools::build()
+# 3. Run package check & build
+check()
+build()
 
-# Preview your site locally before publishing ----
-pkgdown::build_site()
-pkgdown::preview_site()
+# 4. Preview documentation site
+build_site()
+preview_site()
 
-
-# open codebook creator
-ui <- open_codebook_creator("codebook_ui")
-
-server <- function(input, output, session) {
-  codebook_server("codebook_ui")
-}
-
-shiny::shinyApp(ui, server)

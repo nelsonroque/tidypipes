@@ -60,3 +60,24 @@ citation("tidypipes")
 📢 Contributions welcome! Feel free to open an issue or submit a pull request. (CODE OF CONDUCT LINK GOES HERE)
 
 [Let me know](https://bsky.app/profile/nelsonroque.bsky.social) if you want a more detailed roadmap or tweaks! 🚀
+
+---
+
+## Roadmap Voting
+integrate rio: https://gesistsa.github.io/rio/
+
+https://rstudio.github.io/renv/news/index.html
+Study changelog format and links to Github issues. Eventually want to be that specific.
+
+---
+
+## Notes
+# 5. Launch codebook UI (optional, dev-only)
+if (interactive()) {
+  ui <- open_codebook_creator("codebook_ui")
+  server <- function(input, output, session) {
+    codebook_server("codebook_ui")
+  }
+  shiny::shinyApp(ui, server)
+}
+
