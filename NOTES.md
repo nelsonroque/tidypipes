@@ -15,3 +15,5 @@ filename? file? filen? fn? file_path?
 # DO WE
 
 integrate rio: https://gesistsa.github.io/rio/
+
+integratio: logr
