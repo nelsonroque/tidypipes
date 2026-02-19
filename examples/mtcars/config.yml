@@ -1,0 +1,6 @@
+name: mtcars-demo
+params:
+  output_dir: examples/mtcars/output
+  csv_name: mtcars_clean.csv
+  codebook_csv: mtcars_codebook.csv
+  codebook_md: mtcars_codebook.md

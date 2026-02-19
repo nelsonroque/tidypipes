@@ -1,0 +1,23 @@
+name: mtcars-main
+params:
+  output_dir: examples/mtcars/output
+  csv_name: mtcars_clean.csv
+  codebook_csv: mtcars_codebook.csv
+  codebook_md: mtcars_codebook.md
+
+steps:
+  - id: init
+    script: examples/mtcars/scripts/01_init.R
+
+  - id: clean
+    script: examples/mtcars/scripts/02_clean.R
+    depends_on: [init]
+    outputs:
+      - "{output_dir}/{csv_name}"
+
+  - id: codebook
+    script: examples/mtcars/scripts/03_codebook.R
+    depends_on: [clean]
+    outputs:
+      - "{output_dir}/{codebook_csv}"
+      - "{output_dir}/{codebook_md}"

@@ -1,0 +1,34 @@
+url: https://elclaudioabierto.github.io/tidypipes/
+template:
+  bootstrap: 5
+
+navbar:
+  structure:
+    left: [reference, articles, news]
+    right: [github]
+
+reference:
+  - title: "Pipeline orchestration"
+    contents:
+      - run_pipeline
+      - retry_failed_steps
+      - resume_pipeline
+      - schedule_pipeline
+      - run_scheduler_once
+      - scheduler_status
+      - backfill_pipeline
+
+  - title: "Data products"
+    contents:
+      - build_dataset
+      - build_duckdb_table
+      - generate_codebook
+      - stamp_datasets
+      - visualize_pipeline
+
+  - title: "Configuration and reporting"
+    contents:
+      - read_pipeline_config
+      - env_report
+      - package_report
+      - write_audit_event

@@ -1,50 +1,33 @@
 Package: tidypipes
-Type: Package
-Title: Tidy Data Pipelines For All-Scale Data Management
-Version: 0.1.2
-Author: Nelson Roque, PhD
-Maintainer: Nelson Roque <nelsonroquejr@gmail.com>
-Description: This package provides tools for creating tidy data pipelines,
-    enabling streamlined data cleaning and processing workflows.
-    Use four spaces when indenting paragraphs within the Description.
+Title: Local, Script-First Data Pipelines for the Tidyverse
+Version: 0.0.3
+Authors@R: 
+    person(given = "Claudio", family = "Builder", role = c("aut", "cre"), email = "you@example.com")
+Description: Run local data pipelines defined in YAML or JSON. Each pipeline step is an R script,
+    with dependency-aware execution, emoji-rich console logging, and structured audit logging.
 License: MIT + file LICENSE
 Encoding: UTF-8
-LazyData: true
-Imports: 
-    arrow,
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+Imports:
     cli,
-    digest,
-    dplyr,
-    DT,
     fs,
     glue,
-    haven, 
-    httr,
-    janitor,
     jsonlite,
-    lubridate,
-    magrittr,
+    rlang,
+    yaml
+Suggests:
+    arrow,
+    DBI,
+    duckdb,
+    dplyr,
+    janitor,
+    pins,
+    pkgdown,
     purrr,
     readr,
-    readxl,
-    rlang,
-    shiny,
     stringr,
-    tibble,
-    tidyselect,
-    tidyr,
-    todor,
-    usethis,
-    withr,
-    writexl
-Suggests:
-    fs,
-    glue,
-    knitr,
-    rlang,
-    rmarkdown,
-    rstudioapi,
     testthat (>= 3.0.0),
-    usethis
-RoxygenNote: 7.3.2
-VignetteBuilder: knitr
+    tibble,
+    withr
+Config/testthat/edition: 3
